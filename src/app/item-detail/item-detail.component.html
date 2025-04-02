@@ -1,7 +1,28 @@
-<p>Dựa vào id để lấy item tương ứng</p>
-<p>{{id()}}</p>
-<p>{{name()}}</p>
+<div *ngIf="item" class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg border-0 rounded-4" style="max-width: 400px;">
+    <div class="card-body text-center">
+      <!-- Tên sản phẩm -->
+      <h2 class="card-title fw-bold text-primary">{{ item.name }}</h2>
 
+      <!-- Ảnh sản phẩm -->
+      <img [src]="item.image" alt="{{ item.name }}" 
+           class="img-fluid rounded shadow-sm mt-3"
+           style="max-width: 100%; height: auto;">
 
+      <!-- Mô tả -->
+      <p class="card-text text-muted mt-3">{{ item.description }}</p>
 
+      <!-- Giá sản phẩm -->
+      <p class="card-text fw-bold text-danger fs-4">
+        ${{ item.price | number: '1.2-2' }}
+      </p>
 
+      <!-- Nút mua hàng -->
+      <button class="btn btn-success rounded-pill px-4 mt-2">
+        <i class="bi bi-cart-fill"></i> Mua ngay
+      </button>
+    </div>
+  </div>
+</div>
+
+  

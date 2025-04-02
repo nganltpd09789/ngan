@@ -1,1 +1,76 @@
-<p>profile-form works!</p>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Profile Form</h4>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="profileForm">
+                <div formGroupName="basicInfo">
+                    <!-- Basic Information Section -->
+                    <h5 class="mb-3">Basic Information</h5>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" placeholder="Enter First Name"
+                                formControlName="firstName" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Last Name"
+                                formControlName="lastName" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Email"
+                                formControlName="email" />
+                            <span class="fw-bold text-danger" *ngIf="
+                    profileForm.get('basicInfo')?.get('email')?.errors?.[
+                      'required'
+                    ]
+                  ">Email is reuiqred.</span>
+                            <span class="fw-bold text-danger" *ngIf="
+                    profileForm.get('basicInfo')?.get('email')?.errors?.['email']
+                  ">Please enter correct email format.</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Enter Phone Number"
+                                formControlName="phone" />
+                            <span class="fw-bold text-danger" *ngIf="hasPhoneRequiredError()">Phone is required.</span>
+                            <span class="fw-bold text-danger" *ngIf="hasPhoneMinLengthError()">Phone length must be at
+                                least 6</span>
+                            <span class="fw-bold text-danger" *ngIf="hasPhoneMaxLengthError()">Phone length must be not
+                                more than 12.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education Information Section -->
+                <div formGroupName="educationInfo">
+                    <h5 class="mt-4 mb-3">Education Information</h5>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Elementary School</label>
+                            <input type="text" class="form-control" placeholder="Enter Elementary School" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Secondary School</label>
+                            <input type="text" class="form-control" placeholder="Enter Secondary School" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">High School</label>
+                            <input type="text" class="form-control" placeholder="Enter High School" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success" [disabled]="!profileForm.valid">
+                    Save Profile
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

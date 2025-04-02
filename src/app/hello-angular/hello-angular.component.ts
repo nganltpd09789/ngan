@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 
 })
 export class HelloAngularComponent {
-  username: string = "Tân Nguyễn"
   nameProduct = "Bed Side Table";
   price = "15,000"
   description = " A beautiful side table that will perfectly fit your lovely bedroom.";

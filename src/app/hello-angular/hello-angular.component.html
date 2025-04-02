@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Card</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-       
+
     </style>
 </head>
+
 <body>
-   <div class="container d-flex justify-content-center mt-5">
-    <div class="card shadow p-3" style="width: 22rem;">
-        <img src="https://d248k8q1c80cf8.cloudfront.net/WK_Seito_0017_tif_584372fb43.jpg" class="card-img-top" alt="Bed Side Table">
-        <div class="card-body">
-            <h5 class="text-danger fw-bold">
-                ₱{{ price }} <span class="text-decoration-line-through text-muted">₱25,000</span>
-                <span class="badge bg-warning text-dark">Best Seller</span>
-            </h5>
-            <h4 class="fw-bold">{{ nameProduct }}</h4>
-            <p class="text-warning">⭐ 4.9 (2000+)</p>
-            <p>{{ description }}</p>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card shadow p-3" style="width: 22rem;">
+            <img src="https://d248k8q1c80cf8.cloudfront.net/WK_Seito_0017_tif_584372fb43.jpg" class="card-img-top"
+                alt="Bed Side Table">
+            <div class="card-body">
+                <h5 class="text-danger fw-bold">
+                    ₱{{ price }} <span class="text-decoration-line-through text-muted">₱25,000</span>
+                    <span class="badge bg-warning text-dark">Best Seller</span>
+                </h5>
+                <h4 class="fw-bold">{{ nameProduct }}</h4>
+                <p class="text-warning">⭐ 4.9 (2000+)</p>
+                <p>{{ description }}</p>
 
-            <h6>Color</h6>
-            <div>
-                <span class="color-option bg-danger"></span>
-                <span class="color-option bg-dark"></span>
-                <span class="color-option bg-warning"></span>
-                <span class="color-option bg-light border"></span>
-            </div>
+                <h6>Color</h6>
+                <div>
+                    <span class="color-option bg-danger"></span>
+                    <span class="color-option bg-dark"></span>
+                    <span class="color-option bg-warning"></span>
+                    <span class="color-option bg-light border"></span>
+                </div>
 
-            <h6 class="mt-3">Size (cm)</h6>
-            <div class="d-flex justify-content-between ">
-                <button *ngFor="let s of size" class="btn btn-outline-dark btn-sm rounded-pill">{{ s }}</button>
-            </div>
+                <h6 class="mt-3">Size (cm)</h6>
+                <div class="d-flex justify-content-between ">
+                    <button *ngFor="let s of size" class="btn btn-outline-dark btn-sm rounded-pill">{{ s }}</button>
+                </div>
 
-            <h6 class="mt-3">Quantity <span class="badge bg-success">In Stock</span></h6>
-            <div class="input-group my-3">
-                <button class="btn btn-outline-secondary" (click)="decrease()">-</button>
-                <input type="text" class="form-control text-center" [value]="quantity" readonly>
-                <button class="btn btn-outline-secondary" (click)="increase()">+</button>
-            </div>
+                <h6 class="mt-3">Quantity <span class="badge bg-success">In Stock</span></h6>
+                <div class="input-group my-3">
+                    <button class="btn btn-outline-secondary" (click)="decrease()">-</button>
+                    <input type="text" class="form-control text-center" [value]="quantity" readonly>
+                    <button class="btn btn-outline-secondary" (click)="increase()">+</button>
+                </div>
 
-            <div class="d-flex gap-2 border border-secondary align-items-center p-2 rounded-2">
-                <span class="ms-3"> ❤ </span>
-                <span>🛒</span>
-                <button class="btn btn-primary btn-buy">Buy Now</button>
+                <div class="d-flex gap-2 border border-secondary align-items-center p-2 rounded-2">
+                    <span class="ms-3"> ❤ </span>
+                    <span>🛒</span>
+                    <button class="btn btn-primary btn-buy">Buy Now</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<h1 [ngClass]="textClasses">Heelloo</h1>
-<h1 [ngStyle]="textStyle">Heelloo style</h1>
-
-<div class="mb-3">
-    <label for="username" class="form-label"> {{ username }}</label>
-    <input type="text" class="form-control" id="username" placeholder="tan@gmail.com" [(ngModel)]="username">
-</div>
-
-<h1 *ngIf="isDisplay">hello world</h1>
 
 </body>
+
 </html>

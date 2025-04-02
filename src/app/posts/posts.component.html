@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Posts</h2>
+      <a routerLink="/create-post" class="btn btn-primary">Create New Post</a>
+    </div>
+  
+    <div *ngIf="loading" class="text-center my-5">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="!loading && !error && posts.length === 0" class="alert alert-info" role="alert">
+      No posts available.
+    </div>
+  
+    <div *ngIf="!loading && posts.length > 0" class="row">
+      <div class="col-12 mb-4" *ngFor="let post of posts">
+        <app-post [post]="post"></app-post>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,73 @@
+<div class="container mt-4">
+    <div class="card shadow p-4">
+      <h3 class="text-center text-primary">Thêm Sản Phẩm</h3>
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Tên sản phẩm -->
+        <div class="mb-3">
+          <label class="form-label">Tên sản phẩm:</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên sản phẩm">
+          <div class="text-danger" *ngIf="productForm.controls['name'].invalid && productForm.controls['name'].touched">
+            Tên sản phẩm từ 6 - 50 ký tự.
+          </div>
+        </div>
+  
+        <!-- Mô tả sản phẩm -->
+        <div class="mb-3">
+          <label class="form-label">Mô tả:</label>
+          <textarea class="form-control" rows="3" formControlName="description" placeholder="Nhập mô tả sản phẩm"></textarea>
+          <div class="text-danger" *ngIf="productForm.controls['description'].invalid && productForm.controls['description'].touched">
+            Mô tả từ 6 - 250 ký tự.
+          </div>
+        </div>
+  
+        <!-- Giá sản phẩm -->
+        <div class="mb-3">
+          <label class="form-label">Giá:</label>
+          <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá sản phẩm">
+          <div class="text-danger" *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].touched">
+            Giá sản phẩm từ 1 - 100.
+          </div>
+        </div>
+  
+        <!-- Chọn màu -->
+        <div class="mb-3">
+          <label class="form-label">Chọn màu:</label>
+          <select class="form-select" (change)="onColorSelected($event)">
+            <option value="">-- Chọn màu --</option>
+            <option *ngFor="let color of availableColors" [value]="color">{{ color }}</option>
+          </select>
+        </div>
+  
+        <!-- Màu đã chọn -->
+        <div class="mb-3" *ngIf="colors.length > 0">
+          <label class="form-label">Màu đã chọn:</label>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let color of colors.controls; let i = index">
+              {{ color.value }}
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeColor(i)">Xóa</button>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Chọn ảnh -->
+        <div class="mb-3">
+          <label class="form-label">Hình ảnh:</label>
+          <input type="file" class="form-control" multiple (change)="onFileSelected($event)" placeholder="Chọn ảnh cho sản phẩm">
+        </div>
+  
+        <!-- Hiển thị ảnh đã chọn -->
+        <div class="mb-3" *ngIf="selectedImages.length > 0">
+          <label class="form-label">Ảnh đã chọn:</label>
+          <div class="d-flex flex-wrap">
+            <img *ngFor="let img of selectedImages" [src]="img" class="img-thumbnail me-2 mb-2" width="100">
+            
+          </div>
+        </div>
+  
+        <!-- Nút Submit -->
+        <button type="submit" class="btn btn-primary w-100" [disabled]="productForm.invalid">Tạo sản phẩm</button>
+      </form>
+    </div>
+  </div>
+  

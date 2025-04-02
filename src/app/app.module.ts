@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +15,12 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { FormProductComponent } from './form-product/form-product.component';
+import { Lab3Component } from './lab3/lab3.component';
+import { PostComponent } from './post/post.component';
+import { PostsComponent } from './posts/posts.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -25,16 +33,24 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     ItemDetailComponent,
     PageNotFoundComponent,
     ProfileFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    FormProductComponent,
+    Lab3Component,
+    PostComponent,
+    PostsComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([])
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

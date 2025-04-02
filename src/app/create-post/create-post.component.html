@@ -1,0 +1,77 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h3>Create New Post</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+          
+          <!-- Success message -->
+          <div *ngIf="success" class="alert alert-success" role="alert">
+            Post created successfully! Redirecting to posts list...
+          </div>
+          
+          <!-- Error message -->
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+          
+          <!-- Title field -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="title" 
+              formControlName="title" 
+              [class.is-invalid]="postForm.get('title')?.invalid && (postForm.get('title')?.dirty || postForm.get('title')?.touched)"
+            >
+            <div class="invalid-feedback" *ngIf="postForm.get('title')?.errors?.['required']">
+              Title is required
+            </div>
+            <div class="invalid-feedback" *ngIf="postForm.get('title')?.errors?.['minlength']">
+              Title must be at least 5 characters
+            </div>
+          </div>
+          
+          <!-- Body field -->
+          <div class="mb-3">
+            <label for="body" class="form-label">Content</label>
+            <textarea 
+              class="form-control" 
+              id="body" 
+              rows="6" 
+              formControlName="body"
+              [class.is-invalid]="postForm.get('body')?.invalid && (postForm.get('body')?.dirty || postForm.get('body')?.touched)"
+            ></textarea>
+            <div class="invalid-feedback" *ngIf="postForm.get('body')?.errors?.['required']">
+              Content is required
+            </div>
+            <div class="invalid-feedback" *ngIf="postForm.get('body')?.errors?.['minlength']">
+              Content must be at least 10 characters
+            </div>
+          </div>
+          
+          <!-- Submit button -->
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+            [disabled]="postForm.invalid || submitting"
+          >
+            <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+            {{ submitting ? 'Creating...' : 'Create Post' }}
+          </button>
+          
+          <!-- Cancel button -->
+          <button 
+            type="button" 
+            class="btn btn-secondary ms-2"
+            routerLink="/posts"
+            [disabled]="submitting"
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
