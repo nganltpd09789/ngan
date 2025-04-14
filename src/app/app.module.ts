@@ -21,6 +21,9 @@ import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { TodoComponent } from './todo/todo.component';
+import { CreatTodoComponent } from './creat-todo/creat-todo.component';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { CreatePostComponent } from './create-post/create-post.component';
     PostComponent,
     PostsComponent,
     CreatePostComponent,
+    TodoComponent,
+    CreatTodoComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../models/Post.model';
+import { Todo } from '../models/todo.model';
 
 @Component({
-  selector: 'app-posts',
+  selector: 'app-todo',
   standalone: false,
-  templateUrl: './posts.component.html',
-  styleUrl: './posts.component.css'
+  templateUrl: './todo.component.html',
+  styleUrl: './todo.component.css'
 })
-export class PostsComponent implements OnInit {
-  posts: Post[] = [];
+export class TodoComponent implements OnInit {
+  posts: Todo[] = [];
   loading: boolean = true;
   error: string | null = null;
 
@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
 
   fetchPosts(): void {
     this.loading = true;
-    this.http.get<Post[]>('https://gorest.co.in/public/v2/users/7374931/posts')
+    this.http.get<Todo[]>('https://gorest.co.in//public/v2/users/7374931/todos')
       .subscribe({
         next: (data) => {
           this.posts = data;

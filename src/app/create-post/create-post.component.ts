@@ -6,7 +6,7 @@ import { Post } from '../models/Post.model';
 
 @Component({
   selector: 'app-create-post',
-  standalone: false,
+  standalone: false ,
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.css'
 })
@@ -17,7 +17,7 @@ export class CreatePostComponent {
   success = false;
   
   // Hardcoded user ID as specified in the requirements
-  private userId = 7374916;
+  private userId = 7374931;
   private apiUrl = `https://gorest.co.in/public/v2/users/${this.userId}/posts`;
 
   constructor(

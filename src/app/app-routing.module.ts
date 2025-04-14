@@ -11,6 +11,8 @@ import { FormProductComponent } from './form-product/form-product.component';
 import { Lab3Component } from './lab3/lab3.component';
 import { PostsComponent } from './posts/posts.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { TodoComponent } from './todo/todo.component';
+import { CreatTodoComponent } from './creat-todo/creat-todo.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile',pathMatch: 'full'},
@@ -21,7 +23,8 @@ const routes: Routes = [
   {path:"profile",component: AboutComponent},
   {path:"posts",component: PostsComponent},
   {path:"create-post",component: CreatePostComponent},
-
+  {path:"creat-todo",component: CreatTodoComponent},
+  {path:"todo",component: TodoComponent},
   {path:"items",component: ItemsComponent},
   {path:"newproduct",component: FormProductComponent},
   {path:"items/:id",component: ItemDetailComponent},
